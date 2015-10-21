@@ -31,7 +31,7 @@ With a *Light Terminal*:
 
 The source code that produced the above logs:
 ```js
-var Log = require('../');
+var Log = require('logminer');
 
 var log = new Log('Event');
 

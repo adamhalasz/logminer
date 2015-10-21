@@ -1,8 +1,40 @@
 {
   "name": "logminer",
-  "version": "v0.0.1",
+  "version": "v1.0.0",
   "description": "An object oriented logger for more organised log tracking.",
   "author": "Adam Halasz <mail@adamhalasz.com>",
+  "homepage": "http://github.com/adamhalasz/logminer",
+  "keywords": [
+    "log",
+    "logs",
+    "log mining",
+    "monitor",
+    "issue",
+    "tracking",
+    "deep",
+    "object oriented",
+    "nested",
+    "chain",
+    "event",
+    "track",
+    "info",
+    "warn",
+    "error"
+  ],
+  "bugs": {
+    "url": "http://github.com/adamhalasz/logminer/issues",
+    "email": "mail@adamhalasz.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamhalasz/logminer.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Halász Ádám",
+    "email": "mail@adamhalasz.com",
+    "url": "http://adamhalasz.com/"
+  },
   "dependencies": {
     "colors": "^1.1.2",
     "moment": "^2.10.6",

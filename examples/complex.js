@@ -15,7 +15,12 @@ var grandchild = child.child('GrandChild');
 
 function phoneCall(){
     var child = log.function(arguments);
-    child.message('incoming phone call ');
+    child.message('incoming phone call ', {
+        name: 'George Lucas',
+        phone: '001.124.412.511',
+        location: 'Earth',
+        id: 80022
+    });
     child.message('transmission terminated');
 }
 
@@ -26,7 +31,7 @@ function smsReceived(){
 }
 
 function messageReceived(){
-    var child = log.function(arguments, false);
+    var child = log.function(arguments, true);
     
     child.message('message receiceved from morpheus');
     child.message('message body: "neo wake up..."');

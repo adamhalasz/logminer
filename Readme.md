@@ -26,7 +26,7 @@ With a *Light Terminal*:
 
 ## Complex Hierarchy Example
 
-![complex logs](http://i.imgur.com/Gdzw7PZ.png)
+![complex logs](http://i.imgur.com/3F9wZqK.png)
 
 By This:
 ```js
@@ -126,6 +126,8 @@ parent.onEvent(function(event){
 	// ...
 });
 ```
+
+
 
 ## Todo
 - enable disable log entry elements

@@ -29,7 +29,7 @@ With a *Light Terminal*:
 
 ![complex logs](http://i.imgur.com/3F9wZqK.png)
 
-By This:
+The source code that produced the above logs:
 ```js
 var Log = require('../');
 

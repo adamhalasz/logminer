@@ -1,0 +1,13 @@
+{
+  "name": "logminer",
+  "version": "v0.0.1",
+  "description": "An object oriented logger for more organised log tracking.",
+  "author": "Adam Halasz <mail@adamhalasz.com>",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "moment": "^2.10.6",
+    "stacktrace-js": "^1.0.1",
+    "uniqid": "^1.0.0"
+  },
+  "lincense": "MIT"
+}

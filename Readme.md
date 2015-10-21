@@ -1,35 +1,36 @@
 # logminer
 An object oriented logger for more organised log tracking.
 
-```
+```js
 var Log = require('logminer');
 
 var log = new Log('Parent');
     log.message('hello');
-
-var child = new log.child('Child');
-	child.message('world');
-
-ig0k5h91 ===== Oct 21 15 4:04:36: Parent
-ig0k5h91 ----- Oct 21 15 4:04:36:  at Parent: hello
-ig0k5h92 ===== Oct 21 15 4:04:36: Child
-ig0k5h92 ----- Oct 21 15 4:04:36:  at Parent.Child: world
+    log.warn('world');
+    log.info('in 2015');
+    
+var child = log.child('Child');
+	child.error('exit')
 ```
+With a *Dark Terminal* the above code becomes:
+![logs in dark terminal](http://i.imgur.com/Rp1Hm9W.png)
+
+With a *Light Terminal*:
+![logs in white terminal](http://i.imgur.com/3V4AJvi.png)
 
 ## Features
 - Unlimited Object Nesting
-- Complete Silence
-- Silent Scopes (children will be silent too)
-- Event ID's
-- Listen for Events (they come with time, stack traces etc)
+- Complete Silence Function
+- Limited Silence Function
+- Listen for Events (they come with id, time, stack traces etc) ready for integration into GUI's and external services
 
-This is produced:
+## Complex Hierarchy Example
 
-![enter image description here](http://i.imgur.com/Ya8RF8w.png)
+![complex logs](http://i.imgur.com/Gdzw7PZ.png)
 
 By This:
 ```js
-var Log = require('../');
+var Log = require('logminer');
 
 var log = new Log('Event');
 
@@ -68,46 +69,71 @@ messageReceived();
 var Log = require('logminer');
 ```
 
-#### Initialize a Parent
+#### **Initialize a Parent**
 ```js
-var log = new Log('Parent')
-	log.message('something');
+var parent = new Log('Parent')
+	parent.message('hello');
 ```
 Will display:
-```
-> Oct 21 2015 2:05:49: Parent 
+```c
+# ig0l4o2g Oct 21 15 5:16:00: Parent 
++ ig0l4o2g Oct 21 15 5:16:01:  at Parent: hello
 ```
 
-#### Initialize a Child
+#### **Initialize a Child**
 This creates a child logger which inherits the `Parent` in every log produced with `childlog`.
 ```js
-var log2 = new log.child('Children');
-	log2.message('something');
+var child = parent.child('Child');
+	child.message('hello');
 ```
 Will display:
-```
-> Oct 21 2015 2:05:49: Parent -> Children -> something
+```c
+# ig0l4o3g Oct 21 15 5:16:00: Child 
++ ig0l4o3g Oct 21 15 5:16:01:  at Parent.Child: hello
 ```
 
-#### Initialize a Child in Function
+#### **Initialize a Child in Function**
 This grabs the name of the function.
 ```js
 function hello(){
-	var log2 = log.function(arguments);
-	log2.message('something');
+	var child = parent.function(arguments);
+	child.message('world');
 }
 ```
 Will display:
+```c
+# ig0l4o4g Oct 21 15 5:16:00: hello 
++ ig0l4o4g Oct 21 15 5:16:01:  at Parent.hello: world
 ```
-> Oct 21 2015 2:05:49: Parent -> hello() -> something
+
+## **Event Listeners**
+
+#### **Listen for All Events**
+The `onEvent` method can be used to listen for all events when used on Top-Most Logminer function returned by the module itself. 
+```js
+var Log = require('logminer');
+log.onEvent(function(event){
+	// ...send event to GUI or external service...
+	console.log(event.title, event.arguments);
+});
+```
+
+#### **Listen for Local Events**
+The `onEvent` method can be used on any Logminer Instance to listen for only direct logs from that Instance. (children of the instance will not be catched)
+```js
+var parent = new Log('Parent');
+parent.onEvent(function(event){
+	// ...
+});
 ```
 
 ## Todo
-- Better nesting
-- log error
-- log info
-- log warn 
-- color schemes for different terminals
+- enable disable log entry elements
+- more color schemes configuration
+
+## Contribution
+
+Contribtution is very welcomed!
 
 ## License
 
